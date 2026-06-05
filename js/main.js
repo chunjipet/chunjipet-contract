@@ -388,25 +388,26 @@
   //   return true;
   // }
 
-  document.getElementById("fillDemo").addEventListener("click", () => {
-    ownerName.value = "王小明";
-    ownerIdNo.value = "A123456789";
-    ownerPhone.value = "0912345678";
+  // 懶人表單按鈕
+  // document.getElementById("fillDemo").addEventListener("click", () => {
+  //   ownerName.value = "王小明";
+  //   ownerIdNo.value = "A123456789";
+  //   ownerPhone.value = "0912345678";
 
-    emergencyName.value = "王媽媽";
-    emergencyPhone.value = "0987654321";
+  //   emergencyName.value = "王媽媽";
+  //   emergencyPhone.value = "0987654321";
 
-    ownerEmail.value = "yuca.work@gmail.com";
-    ownerAddress.value = "台北市信義區";
+  //   ownerEmail.value = "yuca.work@gmail.com";
+  //   ownerAddress.value = "台北市信義區";
 
-    petName.value = "皮卡丘";
-    petBreed.value = "比熊犬";
+  //   petName.value = "皮卡丘";
+  //   petBreed.value = "比熊犬";
 
-    petBirthday.value = "2020/01/01";
-    petWeight.value = "6.5";
+  //   petBirthday.value = "2020/01/01";
+  //   petWeight.value = "6.5";
 
-    document.querySelector('input[name="petSex"][value="男生"]').checked = true;
-  });
+  //   document.querySelector('input[name="petSex"][value="男生"]').checked = true;
+  // });
 
   submitBtn.onclick = async () => {
     msg.textContent = "";
