@@ -1,14 +1,14 @@
 (function () {
   // const LIFF_ID = "2008805180-dNJmIam4";
   const GOOGLE_SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbxsMgb8rL0d1d3jTb1LXOjLhgFCYuk8ppc2GjVNSMlL9nJ2qOPzfyJVCpYELDm-XtoFbQ/exec";
+    "https://script.google.com/macros/s/AKfycbzMba9G0NZqElH9_YGg9Ac3_ynJWqI7ybEImElFjGTk91VsJEptCpvMZLnxd_CTNTGHfw/exec";
   const SHARED_SECRET = "petContractSystem_chunjipet_2026";
 
   // 乙方指定動物醫院
   const STORE_VET = {
-    name: "ＯＯＯＯ動物醫院",
-    phone: "(02)0000-0000",
-    address: "ＯＯＯＯＯＯＯＯＯＯＯ",
+    name: "弘吉獸醫院",
+    phone: "(02)2741-0958",
+    address: "106 臺北市大安區誠安里市民大道三段238號",
   };
 
   const canvas = document.getElementById("sig");
@@ -389,25 +389,25 @@
   // }
 
   // 懶人表單按鈕
-  // document.getElementById("fillDemo").addEventListener("click", () => {
-  //   ownerName.value = "王小明";
-  //   ownerIdNo.value = "A123456789";
-  //   ownerPhone.value = "0912345678";
+  document.getElementById("fillDemo").addEventListener("click", () => {
+    ownerName.value = "王小明";
+    ownerIdNo.value = "A123456789";
+    ownerPhone.value = "0912345678";
 
-  //   emergencyName.value = "王媽媽";
-  //   emergencyPhone.value = "0987654321";
+    emergencyName.value = "王媽媽";
+    emergencyPhone.value = "0987654321";
 
-  //   ownerEmail.value = "yuca.work@gmail.com";
-  //   ownerAddress.value = "台北市信義區";
+    ownerEmail.value = "yuca.work@gmail.com";
+    ownerAddress.value = "台北市信義區";
 
-  //   petName.value = "皮卡丘";
-  //   petBreed.value = "比熊犬";
+    petName.value = "皮卡丘";
+    petBreed.value = "比熊犬";
 
-  //   petBirthday.value = "2020/01/01";
-  //   petWeight.value = "6.5";
+    petBirthday.value = "2020/01/01";
+    petWeight.value = "6.5";
 
-  //   document.querySelector('input[name="petSex"][value="男生"]').checked = true;
-  // });
+    document.querySelector('input[name="petSex"][value="男生"]').checked = true;
+  });
 
   submitBtn.onclick = async () => {
     msg.textContent = "";
