@@ -206,8 +206,10 @@
         </div>
 
         <div class="checkRow">
-          <input id="agree" type="checkbox" />
-          <label for="agree">我已完整閱讀並同意上述契約內容</label>
+          <input id="agree" type="checkbox" disabled />
+          <p id="readHint" class="subText">
+            請將契約內容滑到底，系統會自動勾選已閱讀。
+          </p>
         </div>
       </div>
 
@@ -505,19 +507,6 @@
             placeholder="例：雞肉 / 牛肉 / 乳製品"
           />
         </div>
-
-        <div class="label">零食</div>
-        <div class="choiceRow" id="treatRow">
-          <label class="choice"
-            ><input type="radio" name="treatAllowed" value="可以" checked />
-            可以</label
-          >
-          <label class="choice"
-            ><input type="radio" name="treatAllowed" value="不可以" />
-            不可以</label
-          >
-        </div>
-
         <div class="label">病史</div>
         <div class="checkGrid" id="medicalGrid">
           <label class="ck fullRow">

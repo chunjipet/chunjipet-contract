@@ -415,7 +415,11 @@
     submitBtn.textContent = "謝謝您！資料上傳中...";
 
     if (!agree.checked) {
-      setError("請先勾選同意契約內容");
+      setError("請先完整閱讀並同意契約內容");
+      document.querySelector(".contractBox")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
       resetSubmit();
       return;
     }
@@ -650,4 +654,36 @@ ${completeNote}`;
       resetSubmit();
     }
   };
+})();
+
+// 契約內容滑到底後，自動勾選「已完整閱讀」
+(() => {
+  const contractBox = document.querySelector(".contractBox");
+  const agreeCheckbox = document.getElementById("agree");
+  const readHint = document.getElementById("readHint");
+
+  if (!contractBox || !agreeCheckbox) return;
+
+  agreeCheckbox.disabled = true;
+
+  const checkContractRead = () => {
+    const reachedBottom =
+      contractBox.scrollTop + contractBox.clientHeight >=
+      contractBox.scrollHeight - 8;
+
+    if (!reachedBottom) return;
+
+    agreeCheckbox.disabled = false;
+    agreeCheckbox.checked = true;
+    agreeCheckbox.dispatchEvent(new Event("change", { bubbles: true }));
+
+    if (readHint) {
+      readHint.textContent = "已完成契約閱讀確認。";
+    }
+
+    contractBox.removeEventListener("scroll", checkContractRead);
+  };
+
+  contractBox.addEventListener("scroll", checkContractRead);
+  checkContractRead();
 })();
