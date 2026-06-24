@@ -669,8 +669,7 @@ ${completeNote}`;
   const checkContractRead = () => {
     const reachedBottom =
       contractBox.scrollTop + contractBox.clientHeight >=
-      contractBox.scrollHeight - 8;
-
+      contractBox.scrollHeight - 32;
     if (!reachedBottom) return;
 
     agreeCheckbox.disabled = false;
