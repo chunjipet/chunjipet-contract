@@ -1,5 +1,4 @@
 (function () {
-  // const LIFF_ID = "2008805180-dNJmIam4";
   const GOOGLE_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbzMba9G0NZqElH9_YGg9Ac3_ynJWqI7ybEImElFjGTk91VsJEptCpvMZLnxd_CTNTGHfw/exec";
   const SHARED_SECRET = "petContractSystem_chunjipet_2026";
@@ -388,27 +387,6 @@
   //   return true;
   // }
 
-  // 懶人表單按鈕
-  // document.getElementById("fillDemo").addEventListener("click", () => {
-  //   ownerName.value = "王小明";
-  //   ownerIdNo.value = "A123456789";
-  //   ownerPhone.value = "0912345678";
-
-  //   emergencyName.value = "王媽媽";
-  //   emergencyPhone.value = "0987654321";
-
-  //   ownerEmail.value = "yuca.work@gmail.com";
-  //   ownerAddress.value = "台北市信義區";
-
-  //   petName.value = "皮卡丘";
-  //   petBreed.value = "比熊犬";
-
-  //   petBirthday.value = "2020/01/01";
-  //   petWeight.value = "6.5";
-
-  //   document.querySelector('input[name="petSex"][value="男生"]').checked = true;
-  // });
-
   submitBtn.onclick = async () => {
     msg.textContent = "";
     submitBtn.disabled = true;
@@ -643,8 +621,6 @@ ${completeNote}`;
       if (!res.ok || result.success !== true) {
         throw new Error(result.message || "資料送出失敗，請稍後再試");
       }
-
-      // await liff.sendMessages([{ type: "text", text: textMsg }]);
 
       setOK("資料已送出！\n可以回到聊天室了！");
       submitBtn.disabled = true;
