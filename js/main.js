@@ -49,7 +49,7 @@
   const petTemperamentNote = document.getElementById("petTemperamentNote");
 
   const mhNone = document.getElementById("mh_none");
-  const mhBoxes = Array.from(document.querySelectorAll(".mh"));
+  const mhBoxesExceptOther = Array.from(document.querySelectorAll(".mh:not(#otherInjury)"));
 
   const otherInjury = document.getElementById("otherInjury");
   const otherWrap = document.getElementById("otherInjuryWrap");
@@ -278,24 +278,24 @@
 
   function enforceMedicalExclusive() {
     if (mhNone && mhNone.checked) {
-      mhBoxes.forEach((b) => (b.checked = false));
+      mhBoxesExceptOther.forEach((b) => (b.checked = false));
       if (otherInjury) otherInjury.checked = false;
       refreshOtherInjury();
     } else {
       const anyOther =
-        mhBoxes.some((b) => b.checked) || (otherInjury && otherInjury.checked);
+        mhBoxesExceptOther.some((b) => b.checked) || (otherInjury && otherInjury.checked);
       if (anyOther && mhNone) mhNone.checked = false;
     }
   }
   if (mhNone) mhNone.addEventListener("change", enforceMedicalExclusive);
-  mhBoxes.forEach((b) => b.addEventListener("change", enforceMedicalExclusive));
+  mhBoxesExceptOther.forEach((b) => b.addEventListener("change", enforceMedicalExclusive));
   if (otherInjury)
     otherInjury.addEventListener("change", enforceMedicalExclusive);
 
   function getMedicalHistory() {
     const arr = [];
     if (mhNone && mhNone.checked) arr.push(mhNone.value);
-    mhBoxes.forEach((el) => {
+    mhBoxesExceptOther.forEach((el) => {
       if (el.checked) arr.push(el.value);
     });
     if (otherInjury && otherInjury.checked) arr.push(otherInjury.value);
