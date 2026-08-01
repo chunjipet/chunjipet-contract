@@ -247,6 +247,58 @@
           />
         </div>
 
+        <div class="label">想請問您是從哪裡認識春吉的呢？</div>
+
+        <div class="checkGrid" id="sourceGrid">
+          <label class="ck fullRow">
+            <input type="radio" name="referralSource" value="Instagram（IG）" />
+            Instagram（IG）
+          </label>
+
+          <label class="ck fullRow">
+            <input type="radio" name="referralSource" value="親朋好友推薦" />
+            親朋好友推薦
+          </label>
+
+          <label class="ck fullRow">
+            <input type="radio" name="referralSource" value="路過看到" />
+            路過看到
+          </label>
+
+          <label class="ck fullRow">
+            <input
+              type="radio"
+              name="referralSource"
+              value="Google 地圖／Google 地標"
+            />
+            Google 地圖／Google 地標
+          </label>
+
+          <label class="ck fullRow">
+            <input
+              type="radio"
+              id="referralOther"
+              name="referralSource"
+              value="其他"
+            />
+            其他
+          </label>
+        </div>
+
+        <div id="referralOtherWrap" class="hidden" style="margin-top: 10px">
+          <input
+            id="referralOtherText"
+            class="input"
+            type="text"
+            placeholder="請填寫來源"
+          />
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="sectionTitle">寵物資料表</div>
+        <div class="subText">以下資料將作為契約附件之一部分</div>
+
         <div class="label">寵物姓名</div>
         <input id="petName" class="input" placeholder="請輸入寵物姓名" />
 
@@ -557,9 +609,6 @@
           />
         </div>
 
-        <div class="label">審閱 / 簽署日期</div>
-        <input type="text" id="signDate" class="input" readonly />
-
         <div class="label">緊急就醫機構</div>
         <div class="choiceRow" id="vetModeRow">
           <label class="choice"
@@ -621,6 +670,9 @@
 
         <div class="label" style="margin-top: 0">甲方簽名</div>
         <canvas id="sig"></canvas>
+
+        <div class="label">審閱 / 簽署日期</div>
+        <input type="text" id="signDate" class="input" readonly />
 
         <div class="dangerNote">簽名完成後，系統將寄送契約副本至 Email</div>
 

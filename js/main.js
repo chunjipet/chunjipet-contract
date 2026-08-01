@@ -43,6 +43,10 @@
   const allergyDetailWrap = document.getElementById("allergyDetailWrap");
   const allergyDetail = document.getElementById("allergyDetail");
 
+  const sourceGrid = document.getElementById("sourceGrid");
+  const referralOtherWrap = document.getElementById("referralOtherWrap");
+  const referralOtherText = document.getElementById("referralOtherText");
+
   const medicalNote = document.getElementById("medicalNote");
 
   const ptBoxes = Array.from(document.querySelectorAll(".pt"));
@@ -254,6 +258,25 @@
     .forEach((r) => r.addEventListener("change", refreshAllergy));
   refreshAllergy();
 
+  function refreshReferralOther() {
+    if (!referralOtherWrap) return;
+
+    const show = getRadio("referralSource") === "其他";
+    setHidden(referralOtherWrap, !show);
+
+    if (!show && referralOtherText) {
+      referralOtherText.value = "";
+    }
+
+    if (show && referralOtherText) {
+      referralOtherText.focus();
+    }
+  }
+  document
+    .querySelectorAll('input[name="referralSource"]')
+    .forEach((radio) => radio.addEventListener("change", refreshReferralOther));
+  refreshReferralOther();
+
   function refreshVet() {
     const mode = getRadio("vetMode");
     const isStore = mode === "乙方指定";
@@ -411,6 +434,34 @@
     const foodAllergy = getRadio("foodAllergy") || "無";
     const treatAllowed = getRadio("treatAllowed") || "可以";
     const petSex = getRadio("petSex") || "男生";
+    const referralSource = getRadio("referralSource");
+
+    if (!referralSource) {
+      setError("請選擇：從哪裡認識春吉");
+      markFieldError(sourceGrid);
+      sourceGrid?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+      sourceGrid
+        ?.querySelector('input[name="referralSource"]')
+        ?.focus({ preventScroll: true });
+      resetSubmit();
+      return;
+    }
+
+    const referralOtherTextValue = (referralOtherText?.value || "").trim();
+    if (referralSource === "其他" && !referralOtherTextValue) {
+      setError("請填寫：其他認識來源");
+      markFieldError(referralOtherText);
+      referralOtherWrap?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+      referralOtherText?.focus({ preventScroll: true });
+      resetSubmit();
+      return;
+    }
 
     const medicalHistory = getMedicalHistory();
     const medicalNoteText = (medicalNote?.value || "").trim();
@@ -431,6 +482,9 @@
       isOwnerSelf,
       ownerRelation:
         isOwnerSelf === "否" ? requireValue(ownerRelation, "與飼主關係") : "",
+      referralSource,
+      referralOtherText:
+        referralSource === "其他" ? referralOtherTextValue : "",
 
       petName: requireValue(petName, "寵物姓名"),
       petBreed: requireValue(petBreed, "寵物品種"),
@@ -559,6 +613,7 @@ Email：${data.ownerEmail}
 身分證字號：${data.ownerIdNo}
 通訊地址：${data.ownerAddress}
 是否飼主本人：${data.isOwnerSelf}${data.ownerRelation ? "（關係：" + data.ownerRelation + "）" : ""}
+認識來源：${data.referralSource || "（未選擇）"}${data.referralOtherText ? "（" + data.referralOtherText + "）" : ""}
 
 寵物名字：${data.petName}
 品種：${data.petBreed}
